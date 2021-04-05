@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const API_KEY = 'ad86b534a1a14d4891f171701201710';
+export const API_KEY = '18692705-ed4727d48f1212ef902c664a7';
 
 export const instance = axios.create({
-  baseURL: 'https://api.weatherapi.com/v1',
+  baseURL: 'https://pixabay.com/api',
 });

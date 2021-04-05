@@ -3,7 +3,7 @@ import { makeStyles, AppBar, Toolbar, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
-    marginTop: 8,
+    marginTop: 0,
     width: '100%',
     marginBottom: 16,
   },
