@@ -1,31 +1,21 @@
+import { Container, Grid, Paper } from '@material-ui/core';
 import React from 'react';
-// import { Paper } from '@material-ui/core';
-// import { useDispatch } from 'react-redux';
 import { SimpleAppBar } from '../@components/AppBar/AppBar';
-// import CurrentWeather from '../@components/CurrentWeather';
-// import { getUserCoordinatesTC } from '../@store/current-weather/slice';
-// import Forecast from '../@components/Forecast/Forecast';
-// import Search from '../@components/Search/Search';
 
 export const AppContainer: React.FC = () => {
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getUserCoordinatesTC());
-  // }, [dispatch]);
-
   return (
     <div className="App">
       <SimpleAppBar />
-      {/* <Paper elevation={3}>
-        <Search />
-      </Paper>
-      <Paper elevation={3}>
-        <CurrentWeather />
-      </Paper>
-      <Paper elevation={3}>
-        <Forecast />
-      </Paper> */}
+      <Container maxWidth="lg">
+        <Grid container spacing={1}>
+          <Grid item xs={12} md={6}>
+            <Paper elevation={3}>111</Paper>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Paper elevation={3}>222</Paper>
+          </Grid>
+        </Grid>
+      </Container>
     </div>
   );
 };
