@@ -1,8 +1,16 @@
 import { Container, Grid, Paper } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { SimpleAppBar } from '../@components/AppBar/AppBar';
+import { picturesTC } from '../@store/pictures/slice';
 
 export const AppContainer: React.FC = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(picturesTC({ pictureSearch: '', page: 1 }));
+  }, [dispatch]);
+
   return (
     <div className="App">
       <SimpleAppBar />
