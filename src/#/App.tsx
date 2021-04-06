@@ -2,6 +2,7 @@ import { Container, Grid, Paper } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { SimpleAppBar } from '../@components/AppBar/AppBar';
+import ImageGallery from '../@components/ImageGallery';
 import { picturesTC } from '../@store/pictures/slice';
 
 export const AppContainer: React.FC = () => {
@@ -23,6 +24,7 @@ export const AppContainer: React.FC = () => {
             <Paper elevation={3}>222</Paper>
           </Grid>
         </Grid>
+        <ImageGallery />
       </Container>
     </div>
   );
