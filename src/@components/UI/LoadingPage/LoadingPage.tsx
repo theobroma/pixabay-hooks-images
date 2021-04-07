@@ -1,20 +1,19 @@
 import React from 'react';
-import { CircularProgress, Grid, Box } from '@material-ui/core';
+import { CircularProgress, Backdrop, makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
+}));
 
 export const LoadingPage: React.FC = () => {
+  const classes = useStyles();
   return (
-    <Grid container>
-      <Grid item xs={12}>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          style={{ height: '100vh' }}
-        >
-          <CircularProgress color="secondary" />
-        </Box>
-      </Grid>
-    </Grid>
+    <Backdrop className={classes.backdrop} open>
+      <CircularProgress color="inherit" />
+    </Backdrop>
   );
 };
 export default LoadingPage;

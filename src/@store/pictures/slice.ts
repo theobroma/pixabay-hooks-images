@@ -27,7 +27,7 @@ export const picturesTC = createAsyncThunk(
     } catch (err) {
       return thunkAPI.rejectWithValue(err.response.data);
     } finally {
-      // thunkAPI.dispatch(setLoading(false));
+      thunkAPI.dispatch(setLoading(false));
     }
   },
 );
