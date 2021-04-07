@@ -16,14 +16,14 @@ export const AppContainer: React.FC = () => {
     <div className="App">
       <SimpleAppBar />
       <Container maxWidth="lg">
-        <Grid container spacing={1}>
+        {/* <Grid container spacing={1}>
           <Grid item xs={12} md={6}>
             <Paper elevation={3}>111</Paper>
           </Grid>
           <Grid item xs={12} md={6}>
             <Paper elevation={3}>222</Paper>
           </Grid>
-        </Grid>
+        </Grid> */}
         <ImageGallery />
       </Container>
     </div>
