@@ -1,4 +1,4 @@
-import { Container, Grid, Paper } from '@material-ui/core';
+import { Box, Button, Container, Grid, Paper } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SimpleAppBar } from '../@components/AppBar/AppBar';
@@ -9,11 +9,12 @@ import { picturesTC } from '../@store/pictures/slice';
 
 export const AppContainer: React.FC = () => {
   const dispatch = useDispatch();
-  const picturesLoading = useSelector(picturesSelector).loading;
+  // const picturesLoading = useSelector(picturesSelector).loading;
+  const { loading: picturesLoading, page } = useSelector(picturesSelector);
 
   useEffect(() => {
-    dispatch(picturesTC({ pictureSearch: '', page: 1 }));
-  }, [dispatch]);
+    dispatch(picturesTC({ pictureSearch: '', page }));
+  }, [dispatch, page]);
 
   return (
     <div className="App">
@@ -29,6 +30,11 @@ export const AppContainer: React.FC = () => {
         </Grid> */}
         {picturesLoading && <LoadingPage />}
         <ImageGallery />
+        <Box my={3} textAlign="center">
+          <Button variant="contained" color="primary">
+            Load more
+          </Button>
+        </Box>
       </Container>
     </div>
   );

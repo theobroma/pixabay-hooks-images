@@ -5,6 +5,7 @@ import { PicturesDataType } from '../../@types';
 const picturesInitialState = {
   data: {} as PicturesDataType,
   loading: false,
+  page: 1,
 };
 
 // delay
@@ -38,6 +39,9 @@ export const slice = createSlice({
   reducers: {
     setLoading(state, action) {
       state.loading = action.payload;
+    },
+    incrementPage(state) {
+      state.page += 1;
     },
   },
   extraReducers: (builder) => {
