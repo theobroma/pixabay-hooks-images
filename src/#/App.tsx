@@ -1,12 +1,15 @@
 import { Container, Grid, Paper } from '@material-ui/core';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { SimpleAppBar } from '../@components/AppBar/AppBar';
 import ImageGallery from '../@components/ImageGallery';
+import LoadingPage from '../@components/UI/LoadingPage';
+import { picturesSelector } from '../@store/pictures/selectors';
 import { picturesTC } from '../@store/pictures/slice';
 
 export const AppContainer: React.FC = () => {
   const dispatch = useDispatch();
+  const picturesLoading = useSelector(picturesSelector).loading;
 
   useEffect(() => {
     dispatch(picturesTC({ pictureSearch: '', page: 1 }));
@@ -24,6 +27,7 @@ export const AppContainer: React.FC = () => {
             <Paper elevation={3}>222</Paper>
           </Grid>
         </Grid> */}
+        {picturesLoading && <LoadingPage />}
         <ImageGallery />
       </Container>
     </div>

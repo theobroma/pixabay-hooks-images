@@ -4,6 +4,7 @@ import { PicturesDataType } from '../../@types';
 
 const picturesInitialState = {
   data: {} as PicturesDataType,
+  loading: false,
 };
 
 // delay
@@ -18,23 +19,26 @@ function waitforme(milisec: number) {
 export const picturesTC = createAsyncThunk(
   'pictures/picturesTC',
   async (param: { pictureSearch: string; page: number }, thunkAPI) => {
+    thunkAPI.dispatch(setLoading(true));
     try {
       await waitforme(2000);
       const res = await pictureAPI.fetchImages(param.pictureSearch, param.page);
       return { data: res.data };
     } catch (err) {
       return thunkAPI.rejectWithValue(err.response.data);
+    } finally {
+      // thunkAPI.dispatch(setLoading(false));
     }
   },
 );
 
 export const slice = createSlice({
-  name: 'search',
+  name: 'pictures',
   initialState: picturesInitialState,
   reducers: {
-    // clearDataAC(state) {
-    //   state.data = {};
-    // },
+    setLoading(state, action) {
+      state.loading = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(picturesTC.fulfilled, (state, action) => {
@@ -46,4 +50,4 @@ export const slice = createSlice({
 });
 
 export const picturesReducer = slice.reducer;
-// export const { clearDataAC } = slice.actions;
+export const { setLoading } = slice.actions;
