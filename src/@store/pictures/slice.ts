@@ -3,7 +3,11 @@ import { pictureAPI } from '../../@api/picture-api';
 import { PicturesDataType } from '../../@types';
 
 const picturesInitialState = {
-  data: {} as PicturesDataType,
+  data: {
+    total: 0,
+    totalHits: 0,
+    hits: [],
+  } as PicturesDataType,
   loading: false,
   page: 1,
 };
@@ -47,11 +51,14 @@ export const slice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(picturesTC.fulfilled, (state, action) => {
       if (action.payload) {
-        state.data = action.payload.data;
+        // state.data = action.payload.data;
+        state.data.total = action.payload.data.total;
+        state.data.totalHits = action.payload.data.totalHits;
+        state.data.hits.push(...action.payload.data.hits);
       }
     });
   },
 });
 
 export const picturesReducer = slice.reducer;
-export const { setLoading } = slice.actions;
+export const { setLoading, incrementPage } = slice.actions;

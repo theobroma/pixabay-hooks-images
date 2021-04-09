@@ -1,7 +1,7 @@
 export interface PicturesDataType {
   total: number;
   totalHits: number;
-  hits?: HitsEntity[] | null;
+  hits: HitsEntity[];
 }
 export interface HitsEntity {
   id: number;

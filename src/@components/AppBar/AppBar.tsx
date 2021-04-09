@@ -15,7 +15,7 @@ export const SimpleAppBar: React.FC = (props) => {
     <div className={classes.root}>
       <AppBar position="static" color="primary">
         <Toolbar>
-          <Typography variant="h6">Weather App</Typography>
+          <Typography variant="h6">Pixabay Images</Typography>
         </Toolbar>
       </AppBar>
     </div>
