@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/pixabay-hooks-images/static/css/main.fdd61235.chunk.css",
+    "main.js": "/pixabay-hooks-images/static/js/main.6153970c.chunk.js",
+    "main.js.map": "/pixabay-hooks-images/static/js/main.6153970c.chunk.js.map",
+    "runtime-main.js": "/pixabay-hooks-images/static/js/runtime-main.1f7b552d.js",
+    "runtime-main.js.map": "/pixabay-hooks-images/static/js/runtime-main.1f7b552d.js.map",
+    "static/css/2.cf7a4d2c.chunk.css": "/pixabay-hooks-images/static/css/2.cf7a4d2c.chunk.css",
+    "static/js/2.dcb28caa.chunk.js": "/pixabay-hooks-images/static/js/2.dcb28caa.chunk.js",
+    "static/js/2.dcb28caa.chunk.js.map": "/pixabay-hooks-images/static/js/2.dcb28caa.chunk.js.map",
+    "static/js/3.72c60b5f.chunk.js": "/pixabay-hooks-images/static/js/3.72c60b5f.chunk.js",
+    "static/js/3.72c60b5f.chunk.js.map": "/pixabay-hooks-images/static/js/3.72c60b5f.chunk.js.map",
+    "index.html": "/pixabay-hooks-images/index.html",
+    "static/css/2.cf7a4d2c.chunk.css.map": "/pixabay-hooks-images/static/css/2.cf7a4d2c.chunk.css.map",
+    "static/css/main.fdd61235.chunk.css.map": "/pixabay-hooks-images/static/css/main.fdd61235.chunk.css.map",
+    "static/js/2.dcb28caa.chunk.js.LICENSE.txt": "/pixabay-hooks-images/static/js/2.dcb28caa.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/pixabay-hooks-images/static/media/roboto-latin-900italic.cb5ad999.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1f7b552d.js",
+    "static/css/2.cf7a4d2c.chunk.css",
+    "static/js/2.dcb28caa.chunk.js",
+    "static/css/main.fdd61235.chunk.css",
+    "static/js/main.6153970c.chunk.js"
+  ]
+}
