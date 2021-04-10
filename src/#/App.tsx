@@ -1,7 +1,7 @@
 import { Box, Button, Container } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SimpleAppBar } from '../@components/AppBar/AppBar';
+import { PrimarySearchAppBar } from '../@components/AppBar/AppBar';
 import ImageGallery from '../@components/ImageGallery';
 import LoadingPage from '../@components/UI/LoadingPage';
 import { picturesSelector } from '../@store/pictures/selectors';
@@ -21,7 +21,9 @@ export const AppContainer: React.FC = () => {
 
   return (
     <div className="App">
-      <SimpleAppBar />
+      <Box mb={2}>
+        <PrimarySearchAppBar />
+      </Box>
       <Container maxWidth="lg">
         {picturesLoading && <LoadingPage />}
         <ImageGallery />
