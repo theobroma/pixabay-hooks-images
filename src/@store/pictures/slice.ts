@@ -26,7 +26,7 @@ export const picturesTC = createAsyncThunk(
   async (param: { pictureSearch: string; page: number }, thunkAPI) => {
     thunkAPI.dispatch(setLoading(true));
     try {
-      await waitforme(2000);
+      await waitforme(1000);
       const res = await pictureAPI.fetchImages(param.pictureSearch, param.page);
       return { data: res.data };
     } catch (err) {
