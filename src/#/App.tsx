@@ -9,11 +9,13 @@ import { incrementPage, picturesTC } from '../@store/pictures/slice';
 
 export const AppContainer: React.FC = () => {
   const dispatch = useDispatch();
-  const { loading: picturesLoading, page } = useSelector(picturesSelector);
+  const { loading: picturesLoading, page, pictureSearch } = useSelector(
+    picturesSelector,
+  );
 
   useEffect(() => {
-    dispatch(picturesTC({ pictureSearch: '', page }));
-  }, [dispatch, page]);
+    dispatch(picturesTC({ pictureSearch, page }));
+  }, [dispatch, pictureSearch, page]);
 
   const handleLoadMore = () => {
     dispatch(incrementPage());

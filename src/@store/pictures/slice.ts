@@ -10,6 +10,7 @@ const picturesInitialState = {
   } as PicturesDataType,
   loading: false,
   page: 1,
+  pictureSearch: 'nature',
 };
 
 // delay
@@ -47,6 +48,11 @@ export const slice = createSlice({
     incrementPage(state) {
       state.page += 1;
     },
+    setPictureSearch(state, action) {
+      state.data.hits = []; // clear
+      state.page = 1;
+      state.pictureSearch = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(picturesTC.fulfilled, (state, action) => {
@@ -61,4 +67,4 @@ export const slice = createSlice({
 });
 
 export const picturesReducer = slice.reducer;
-export const { setLoading, incrementPage } = slice.actions;
+export const { setLoading, incrementPage, setPictureSearch } = slice.actions;

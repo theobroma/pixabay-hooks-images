@@ -8,6 +8,8 @@ import {
 } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
+import { useDispatch } from 'react-redux';
+import { setPictureSearch } from '../../../@store/pictures/slice';
 
 const useStyles = makeStyles((theme: Theme) => {
   // console.log(theme); // print mui global theme object
@@ -56,11 +58,12 @@ const useStyles = makeStyles((theme: Theme) => {
 
 const SearchBar: React.FC = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [searchValue, setSearchValue] = React.useState('');
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-    alert('gotta submit');
+    dispatch(setPictureSearch(searchValue));
   };
 
   return (
