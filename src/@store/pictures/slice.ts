@@ -11,6 +11,10 @@ const picturesInitialState = {
   loading: false,
   page: 1,
   pictureSearch: 'nature',
+  largeImageURL: '',
+  // largeImageURL:
+  //   'https://pixabay.com/get/g6c5abb332425843c9179b22435f354f8196863905e6c842e4d399527db510613a17a959eec3cdb72db80a2eab0d99b61aecca3a423e31932f5c2d39f01e39273_1280.jpg',
+  tags: '' as string,
 };
 
 // delay
@@ -53,6 +57,14 @@ export const slice = createSlice({
       state.page = 1;
       state.pictureSearch = action.payload;
     },
+    setImageData(state, action) {
+      state.largeImageURL = action.payload.largeImageURL;
+      state.tags = action.payload.tags;
+    },
+    clearImageData(state) {
+      state.largeImageURL = '';
+      state.tags = '';
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(picturesTC.fulfilled, (state, action) => {
@@ -67,4 +79,9 @@ export const slice = createSlice({
 });
 
 export const picturesReducer = slice.reducer;
-export const { setLoading, incrementPage, setPictureSearch } = slice.actions;
+export const {
+  setLoading,
+  incrementPage,
+  setPictureSearch,
+  setImageData,
+} = slice.actions;

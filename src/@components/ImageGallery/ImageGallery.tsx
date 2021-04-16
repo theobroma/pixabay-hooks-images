@@ -26,9 +26,10 @@ import {
   useMediaQuery,
   useTheme,
 } from '@material-ui/core';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { picturesSelector } from '../../@store/pictures/selectors';
+import { setImageData } from '../../@store/pictures/slice';
 // import ImageGalleryItem from './ImageGalleryItem';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -56,6 +57,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const ImageGallery: React.FC = (props: any) => {
+  const dispatch = useDispatch();
   const picturesData = useSelector(picturesSelector).data;
   const picturesHits = picturesData.hits;
 
@@ -103,7 +105,20 @@ export const ImageGallery: React.FC = (props: any) => {
       >
         {picturesHits?.map((tile) => (
           <GridListTile key={tile.id} cols={1} rows={1}>
-            <img src={tile.webformatURL} alt="none" />
+            <img
+              role="presentation"
+              src={tile.webformatURL}
+              alt={tile.tags}
+              // alt="none"
+              onClick={() => {
+                dispatch(
+                  setImageData({
+                    largeImageURL: tile.largeImageURL,
+                    tags: tile.tags,
+                  }),
+                );
+              }}
+            />
             <GridListTileBar
               title="title"
               titlePosition="top"

@@ -3,15 +3,20 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PrimarySearchAppBar } from '../@components/AppBar/AppBar';
 import ImageGallery from '../@components/ImageGallery';
+import MyModal from '../@components/Modal';
 import LoadingPage from '../@components/UI/LoadingPage';
 import { picturesSelector } from '../@store/pictures/selectors';
 import { incrementPage, picturesTC } from '../@store/pictures/slice';
 
 export const AppContainer: React.FC = () => {
   const dispatch = useDispatch();
-  const { loading: picturesLoading, page, pictureSearch } = useSelector(
-    picturesSelector,
-  );
+  const {
+    loading: picturesLoading,
+    page,
+    pictureSearch,
+    largeImageURL,
+    tags,
+  } = useSelector(picturesSelector);
 
   useEffect(() => {
     dispatch(picturesTC({ pictureSearch, page }));
@@ -39,6 +44,16 @@ export const AppContainer: React.FC = () => {
           </Button>
         </Box>
       </Container>
+      {largeImageURL && (
+        <MyModal>
+          123
+          <img
+            src={largeImageURL}
+            // alt="something"
+            alt={tags}
+          />
+        </MyModal>
+      )}
     </div>
   );
 };
