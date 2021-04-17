@@ -1,20 +1,4 @@
 // Responsive approach https://www.tilcode.com/react-media-query-hook-responsive-material-ui-gridlist/
-// const ImageGallery = ({ picture, setImageData }) => {
-//   return (
-//     <ul className={s.ImageGallery}>
-//       {picture.map(({ webformatURL, largeImageURL, tags }, index) => (
-//         <ImageGalleryItem
-//           onSetImageData={setImageData}
-//           key={index}
-//           src={webformatURL}
-//           largeImageURL={largeImageURL}
-//           tags={tags}
-//         />
-//       ))}
-//     </ul>
-//   );
-// };
-// export default ImageGallery;
 import * as React from 'react';
 import {
   GridList,
@@ -30,7 +14,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { picturesSelector } from '../../@store/pictures/selectors';
 import { setImageData } from '../../@store/pictures/slice';
-// import ImageGalleryItem from './ImageGalleryItem';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -56,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const ImageGallery: React.FC = (props: any) => {
+export const ImageGallery: React.FC = () => {
   const dispatch = useDispatch();
   const picturesData = useSelector(picturesSelector).data;
   const picturesHits = picturesData.hits;
