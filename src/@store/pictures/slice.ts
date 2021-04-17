@@ -84,4 +84,5 @@ export const {
   incrementPage,
   setPictureSearch,
   setImageData,
+  clearImageData,
 } = slice.actions;

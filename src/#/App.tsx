@@ -6,7 +6,11 @@ import ImageGallery from '../@components/ImageGallery';
 import MyModal from '../@components/Modal';
 import LoadingPage from '../@components/UI/LoadingPage';
 import { picturesSelector } from '../@store/pictures/selectors';
-import { incrementPage, picturesTC } from '../@store/pictures/slice';
+import {
+  clearImageData,
+  incrementPage,
+  picturesTC,
+} from '../@store/pictures/slice';
 
 export const AppContainer: React.FC = () => {
   const dispatch = useDispatch();
@@ -21,6 +25,10 @@ export const AppContainer: React.FC = () => {
   useEffect(() => {
     dispatch(picturesTC({ pictureSearch, page }));
   }, [dispatch, pictureSearch, page]);
+
+  const toggleModal = () => {
+    dispatch(clearImageData());
+  };
 
   const handleLoadMore = () => {
     dispatch(incrementPage());
@@ -45,7 +53,7 @@ export const AppContainer: React.FC = () => {
         </Box>
       </Container>
       {largeImageURL && (
-        <MyModal>
+        <MyModal onClose={toggleModal}>
           123
           <img
             src={largeImageURL}

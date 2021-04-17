@@ -4,29 +4,37 @@ import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root') as Element;
 
-const MyModal: React.FC<Props> = ({ children }) => {
-  // useEffect(() => {
-  //   window.addEventListener('keydown', handleKeyDown);
-  //   return () => window.removeEventListener('keydown', handleKeyDown);
-  // });
+const MyModal: React.FC<Props> = ({ onClose, children }) => {
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  });
 
-  // const handleKeyDown = (event: any) => {
-  //   if (event.code === 'Escape') {
-  //     onClose();
-  //   }
-  // };
+  const handleKeyDown = (event: IKeyboardEvent) => {
+    if (event.code === 'Escape') {
+      onClose();
+    }
+  };
 
-  // const handleBackdropClick = (event: any) => {
-  //   if (event.currentTarget === event.target) {
-  //     onClose();
-  //   }
-  // };
+  const onKeyPressHandler = (event: IKeyboardEvent) => {
+    if (event.code === 'Escape') {
+      onClose();
+    }
+  };
+
+  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.currentTarget === event.target) {
+      onClose();
+    }
+  };
 
   return createPortal(
     <div
       className={s.Overlay}
-      // onClick={handleBackdropClick}
-      // onKeyDown={() => {}}
+      onClick={handleBackdropClick}
+      onKeyPress={onKeyPressHandler}
+      role="button"
+      tabIndex={0}
     >
       <div className={s.Modal}>{children}</div>
     </div>,
@@ -37,6 +45,9 @@ const MyModal: React.FC<Props> = ({ children }) => {
 export default MyModal;
 
 type Props = {
-  // onClose: any;
-  children: any;
+  onClose: () => void;
 };
+
+interface IKeyboardEvent {
+  code: string;
+}
