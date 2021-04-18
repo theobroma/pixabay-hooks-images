@@ -22,7 +22,7 @@ const MyModal: React.FC<Props> = ({ onClose, children }) => {
     }
   };
 
-  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleBackdropClick = (event: React.MouseEvent<HTMLElement>) => {
     if (event.currentTarget === event.target) {
       onClose();
     }

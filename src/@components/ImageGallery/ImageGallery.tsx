@@ -103,7 +103,7 @@ export const ImageGallery: React.FC = () => {
               }}
             />
             <GridListTileBar
-              title="title"
+              title={tile.tags}
               titlePosition="top"
               actionIcon={
                 <IconButton aria-label="star title" className={classes.icon}>

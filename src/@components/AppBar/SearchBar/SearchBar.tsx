@@ -61,7 +61,7 @@ const SearchBar: React.FC = () => {
   const dispatch = useDispatch();
   const [searchValue, setSearchValue] = React.useState('');
 
-  const onSubmit = (e: any) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(setPictureSearch(searchValue));
   };
