@@ -20,6 +20,7 @@ export const AppContainer: React.FC = () => {
     pictureSearch,
     largeImageURL,
     tags,
+    data: { hits },
   } = useSelector(picturesSelector);
 
   useEffect(() => {
@@ -42,15 +43,17 @@ export const AppContainer: React.FC = () => {
       <Container maxWidth="lg">
         {picturesLoading && <LoadingPage />}
         <ImageGallery />
-        <Box my={3} textAlign="center">
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => handleLoadMore()}
-          >
-            Load more
-          </Button>
-        </Box>
+        {hits.length > 0 && (
+          <Box my={3} textAlign="center">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handleLoadMore()}
+            >
+              Load more
+            </Button>
+          </Box>
+        )}
       </Container>
       {largeImageURL && (
         <MyModal onClose={toggleModal}>
