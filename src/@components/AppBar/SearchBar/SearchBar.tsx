@@ -82,6 +82,7 @@ const SearchBar: React.FC = () => {
           // additional
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
+          autoFocus
         />
       </form>
     </div>

@@ -12,8 +12,6 @@ const picturesInitialState = {
   page: 1,
   pictureSearch: 'nature',
   largeImageURL: '',
-  // largeImageURL:
-  //   'https://pixabay.com/get/g6c5abb332425843c9179b22435f354f8196863905e6c842e4d399527db510613a17a959eec3cdb72db80a2eab0d99b61aecca3a423e31932f5c2d39f01e39273_1280.jpg',
   tags: '' as string,
 };
 

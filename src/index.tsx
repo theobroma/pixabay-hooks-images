@@ -13,9 +13,6 @@ import reportWebVitals from './reportWebVitals';
 // All styles
 import './@assets/styles/index.scss';
 
-// Open Source typefaces
-import 'typeface-roboto';
-
 const rootEl = document.getElementById('root');
 
 render(
