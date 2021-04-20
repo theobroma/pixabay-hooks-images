@@ -27,6 +27,13 @@ export const AppContainer: React.FC = () => {
     dispatch(picturesTC({ pictureSearch, page }));
   }, [dispatch, pictureSearch, page]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
+  }, [hits]);
+
   const toggleModal = () => {
     dispatch(clearImageData());
   };
