@@ -1,17 +1,18 @@
 // Responsive approach https://www.tilcode.com/react-media-query-hook-responsive-material-ui-gridlist/
-import * as React from 'react';
 import {
-  GridList,
-  GridListTile,
-  GridListTileBar,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
   IconButton,
   makeStyles,
   Theme,
   useMediaQuery,
   useTheme,
 } from '@material-ui/core';
-import { useSelector, useDispatch } from 'react-redux';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import { nanoid } from '@reduxjs/toolkit';
+import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { picturesSelector } from '../../@store/pictures/selectors';
 import { setImageData } from '../../@store/pictures/slice';
 
@@ -80,14 +81,19 @@ export const ImageGallery: React.FC = () => {
 
   return (
     <div className={classes.root}>
-      <GridList
-        cellHeight={260}
+      <ImageList
+        rowHeight={260}
         cols={getScreenWidth()}
-        spacing={1}
+        gap={1}
         className={classes.gridList}
       >
         {picturesHits?.map((tile) => (
-          <GridListTile key={tile.id} cols={1} rows={1}>
+          <ImageListItem
+            //  key={tile.id}
+            key={nanoid()}
+            cols={1}
+            rows={1}
+          >
             <img
               role="presentation"
               src={tile.webformatURL}
@@ -102,9 +108,9 @@ export const ImageGallery: React.FC = () => {
                 );
               }}
             />
-            <GridListTileBar
+            <ImageListItemBar
               title={tile.tags}
-              titlePosition="top"
+              position="top"
               actionIcon={
                 <IconButton aria-label="star title" className={classes.icon}>
                   <StarBorderIcon />
@@ -113,9 +119,9 @@ export const ImageGallery: React.FC = () => {
               actionPosition="left"
               className={classes.titleBar}
             />
-          </GridListTile>
+          </ImageListItem>
         ))}
-      </GridList>
+      </ImageList>
     </div>
   );
 };
