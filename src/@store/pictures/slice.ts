@@ -15,21 +15,22 @@ const picturesInitialState = {
   largeImageURL: '',
   tags: '' as string,
 };
-export const picturesTC = createAsyncThunk<any, any, any>(
-  'pictures/picturesTC',
-  async (param: { pictureSearch: string; page: number }, thunkAPI) => {
-    thunkAPI.dispatch(setLoading(true));
-    try {
-      await waitForMe(1000);
-      const res = await pictureAPI.fetchImages(param.pictureSearch, param.page);
-      return { data: res.data };
-    } catch (err: any) {
-      return thunkAPI.rejectWithValue(err.response.data);
-    } finally {
-      thunkAPI.dispatch(setLoading(false));
-    }
-  },
-);
+export const picturesTC = createAsyncThunk<
+  PicturesDataType,
+  { pictureSearch: string; page: number },
+  any
+>('pictures/picturesTC', async (param, thunkAPI) => {
+  thunkAPI.dispatch(setLoading(true));
+  try {
+    await waitForMe(1000);
+    const res = await pictureAPI.fetchImages(param.pictureSearch, param.page);
+    return res.data;
+  } catch (err: any) {
+    return thunkAPI.rejectWithValue(err.response.data);
+  } finally {
+    thunkAPI.dispatch(setLoading(false));
+  }
+});
 
 export const slice = createSlice({
   name: 'pictures',
@@ -59,9 +60,9 @@ export const slice = createSlice({
     builder.addCase(picturesTC.fulfilled, (state, action) => {
       if (action.payload) {
         // state.data = action.payload.data;
-        state.data.total = action.payload.data.total;
-        state.data.totalHits = action.payload.data.totalHits;
-        state.data.hits.push(...action.payload.data.hits);
+        state.data.total = action.payload.total;
+        state.data.totalHits = action.payload.totalHits;
+        state.data.hits.push(...action.payload.hits);
       }
     });
   },
