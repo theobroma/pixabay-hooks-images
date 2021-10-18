@@ -24,7 +24,7 @@ function waitforme(milisec: number) {
   });
 }
 
-export const picturesTC = createAsyncThunk(
+export const picturesTC = createAsyncThunk<any, any, any>(
   'pictures/picturesTC',
   async (param: { pictureSearch: string; page: number }, thunkAPI) => {
     thunkAPI.dispatch(setLoading(true));
@@ -32,7 +32,7 @@ export const picturesTC = createAsyncThunk(
       await waitforme(1000);
       const res = await pictureAPI.fetchImages(param.pictureSearch, param.page);
       return { data: res.data };
-    } catch (err) {
+    } catch (err: any) {
       return thunkAPI.rejectWithValue(err.response.data);
     } finally {
       thunkAPI.dispatch(setLoading(false));
