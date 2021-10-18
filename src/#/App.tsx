@@ -47,7 +47,7 @@ export const AppContainer: React.FC = () => {
       <Box mb={2}>
         <PrimarySearchAppBar />
       </Box>
-      <Container maxWidth="lg">
+      <Container maxWidth={false}>
         {picturesLoading && <LoadingPage />}
         <ImageGallery />
         {hits.length > 0 && (

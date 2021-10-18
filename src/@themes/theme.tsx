@@ -110,8 +110,16 @@ const PINK_BLUE_GREY_THEME = {
   },
 };
 
+const themeMap = {
+  light: LIGHT_THEME,
+  dark: DARK_THEME,
+  deepPurpleAmber: DEEP_PURPLE_AMBER_THEME,
+  pinkBlueGrey: PINK_BLUE_GREY_THEME,
+};
+
 const AppThemeProvider: React.FC = ({ children }) => {
-  const theme = createTheme(PINK_BLUE_GREY_THEME);
+  const currentTheme = 'light';
+  const theme = createTheme(themeMap[currentTheme]);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
