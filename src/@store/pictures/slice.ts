@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { pictureAPI } from '../../@api/picture-api';
 import { PicturesDataType } from '../../@types';
+import { waitForMe } from '../../@utils/waitforme';
 
 const picturesInitialState = {
   data: {
@@ -14,22 +15,12 @@ const picturesInitialState = {
   largeImageURL: '',
   tags: '' as string,
 };
-
-// delay
-function waitforme(milisec: number) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('');
-    }, milisec);
-  });
-}
-
 export const picturesTC = createAsyncThunk<any, any, any>(
   'pictures/picturesTC',
   async (param: { pictureSearch: string; page: number }, thunkAPI) => {
     thunkAPI.dispatch(setLoading(true));
     try {
-      await waitforme(1000);
+      await waitForMe(1000);
       const res = await pictureAPI.fetchImages(param.pictureSearch, param.page);
       return { data: res.data };
     } catch (err: any) {
