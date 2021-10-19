@@ -1,64 +1,22 @@
-import { Box, Button, Container } from '@material-ui/core';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { PrimarySearchAppBar } from '../@components/AppBar/AppBar';
-import ImageGallery from '../@components/ImageGallery';
 import MyModal from '../@components/Modal';
-import LoadingPage from '../@components/UI/LoadingPage';
 import { modalSelector } from '../@store/modal/selectors';
 import { clearImageData } from '../@store/modal/slice';
-import { picturesSelector } from '../@store/pictures/selectors';
-import { incrementPage, picturesTC } from '../@store/pictures/slice';
+import MainView from '../@views/MainView';
+import { GuestLayout } from './Layouts';
 
 export const AppContainer: React.FC = () => {
   const dispatch = useDispatch();
-  const {
-    loading: picturesLoading,
-    page,
-    pictureSearch,
-    data: { hits },
-  } = useSelector(picturesSelector);
   const { largeImageURL, tags } = useSelector(modalSelector);
-
-  useEffect(() => {
-    dispatch(picturesTC({ pictureSearch, page }));
-  }, [dispatch, pictureSearch, page]);
-
-  useEffect(() => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth',
-    });
-  }, [hits]);
 
   const toggleModal = () => {
     dispatch(clearImageData());
   };
 
-  const handleLoadMore = () => {
-    dispatch(incrementPage());
-  };
-
   return (
-    <div className="App">
-      <Box mb={2}>
-        <PrimarySearchAppBar />
-      </Box>
-      <Container maxWidth={false}>
-        {picturesLoading && <LoadingPage />}
-        <ImageGallery />
-        {hits.length > 0 && (
-          <Box my={3} textAlign="center">
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => handleLoadMore()}
-            >
-              Load more
-            </Button>
-          </Box>
-        )}
-      </Container>
+    <GuestLayout>
+      <MainView />
       {largeImageURL && (
         <MyModal onClose={toggleModal}>
           123
@@ -69,6 +27,6 @@ export const AppContainer: React.FC = () => {
           />
         </MyModal>
       )}
-    </div>
+    </GuestLayout>
   );
 };
