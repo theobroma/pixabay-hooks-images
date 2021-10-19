@@ -16,7 +16,7 @@ const MainView: React.FC = () => {
   //   data: { hits },
   // } = useSelector(picturesSelector);
 
-  const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur');
+  const { data, error, isLoading } = useGetPokemonByNameQuery('fdsf');
 
   // useEffect(() => {
   //   dispatch(picturesTC({ pictureSearch, page }));
@@ -37,8 +37,8 @@ const MainView: React.FC = () => {
     <Container maxWidth={false}>
       cont
       {/* {picturesLoading && <LoadingPage />} */}
-      {/* <ImageGallery />
-      {hits.length > 0 && (
+      <ImageGallery hits={data?.hits} />
+      {/* {hits.length > 0 && (
         <Box my={3} textAlign="center">
           <Button
             variant="contained"

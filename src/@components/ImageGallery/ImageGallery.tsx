@@ -40,10 +40,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const ImageGallery: React.FC = () => {
+interface Props {
+  hits: any;
+}
+
+export const ImageGallery: React.FC<Props> = ({ hits }) => {
   const dispatch = useDispatch();
-  const picturesData = useSelector(picturesSelector).data;
-  const picturesHits = picturesData.hits;
+  // const picturesData = useSelector(picturesSelector).data;
+  // const picturesHits = picturesData.hits;
 
   const classes = useStyles();
   const theme = useTheme();
@@ -87,7 +91,7 @@ export const ImageGallery: React.FC = () => {
         gap={1}
         className={classes.gridList}
       >
-        {picturesHits?.map((tile) => (
+        {hits?.map((tile: any) => (
           <ImageListItem
             //  key={tile.id}
             key={nanoid()}
