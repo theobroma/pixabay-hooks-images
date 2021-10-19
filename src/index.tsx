@@ -23,15 +23,15 @@ const rootEl = document.getElementById('root');
 render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate
+      {/* <PersistGate
         loading={<LoadingPage />}
         persistor={persistor}
         onBeforeLift={() => new Promise((resolve) => setTimeout(resolve, 10))} // delay
-      >
-        <AppThemeProvider>
-          <AppContainer />
-        </AppThemeProvider>
-      </PersistGate>
+      > */}
+      <AppThemeProvider>
+        <AppContainer />
+      </AppThemeProvider>
+      {/* </PersistGate> */}
     </Provider>
   </React.StrictMode>,
   rootEl,

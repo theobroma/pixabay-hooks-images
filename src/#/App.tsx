@@ -8,16 +8,16 @@ import { GuestLayout } from './Layouts';
 
 export const AppContainer: React.FC = () => {
   const dispatch = useDispatch();
-  const { largeImageURL, tags } = useSelector(modalSelector);
+  // const { largeImageURL, tags } = useSelector(modalSelector);
 
-  const toggleModal = () => {
-    dispatch(clearImageData());
-  };
+  // const toggleModal = () => {
+  //   dispatch(clearImageData());
+  // };
 
   return (
     <GuestLayout>
       <MainView />
-      {largeImageURL && (
+      {/* {largeImageURL && (
         <MyModal onClose={toggleModal}>
           123
           <img
@@ -26,7 +26,7 @@ export const AppContainer: React.FC = () => {
             alt={tags}
           />
         </MyModal>
-      )}
+      )} */}
     </GuestLayout>
   );
 };
