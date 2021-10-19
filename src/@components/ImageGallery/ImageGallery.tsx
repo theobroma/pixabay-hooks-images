@@ -1,9 +1,9 @@
 // Responsive approach https://www.tilcode.com/react-media-query-hook-responsive-material-ui-gridlist/
 import {
+  IconButton,
   ImageList,
   ImageListItem,
   ImageListItemBar,
-  IconButton,
   makeStyles,
   Theme,
   useMediaQuery,
@@ -13,8 +13,8 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { nanoid } from '@reduxjs/toolkit';
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { setImageData } from '../../@store/modal/slice';
 import { picturesSelector } from '../../@store/pictures/selectors';
-import { setImageData } from '../../@store/pictures/slice';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

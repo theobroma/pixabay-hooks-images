@@ -12,8 +12,6 @@ const picturesInitialState = {
   loading: false,
   page: 1,
   pictureSearch: 'nature',
-  largeImageURL: '',
-  tags: '' as string,
 };
 export const picturesTC = createAsyncThunk<
   PicturesDataType,
@@ -47,14 +45,6 @@ export const slice = createSlice({
       state.page = 1;
       state.pictureSearch = action.payload;
     },
-    setImageData(state, action) {
-      state.largeImageURL = action.payload.largeImageURL;
-      state.tags = action.payload.tags;
-    },
-    clearImageData(state) {
-      state.largeImageURL = '';
-      state.tags = '';
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(picturesTC.fulfilled, (state, action) => {
@@ -69,10 +59,4 @@ export const slice = createSlice({
 });
 
 export const picturesReducer = slice.reducer;
-export const {
-  setLoading,
-  incrementPage,
-  setPictureSearch,
-  setImageData,
-  clearImageData,
-} = slice.actions;
+export const { setLoading, incrementPage, setPictureSearch } = slice.actions;

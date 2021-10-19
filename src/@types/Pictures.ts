@@ -1,29 +1,29 @@
 export interface PicturesDataType {
+  hits: HitsEntity[];
   total: number;
   totalHits: number;
-  hits: HitsEntity[];
 }
 export interface HitsEntity {
-  id: number;
-  pageURL: string;
-  type: string;
-  tags: string;
-  previewURL: string;
-  previewWidth: number;
-  previewHeight: number;
-  webformatURL: string;
-  webformatWidth: number;
-  webformatHeight: number;
-  largeImageURL: string;
-  imageWidth: number;
-  imageHeight: number;
-  imageSize: number;
-  views: number;
+  comments: number;
   downloads: number;
   favorites: number;
+  id: number;
+  imageHeight: number;
+  imageSize: number;
+  imageWidth: number;
+  largeImageURL: string;
   likes: number;
-  comments: number;
+  pageURL: string;
+  previewHeight: number;
+  previewURL: string;
+  previewWidth: number;
+  tags: string;
+  type: string;
   user_id: number;
   user: string;
   userImageURL: string;
+  views: number;
+  webformatHeight: number;
+  webformatURL: string;
+  webformatWidth: number;
 }

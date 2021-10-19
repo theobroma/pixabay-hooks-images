@@ -5,12 +5,10 @@ import { PrimarySearchAppBar } from '../@components/AppBar/AppBar';
 import ImageGallery from '../@components/ImageGallery';
 import MyModal from '../@components/Modal';
 import LoadingPage from '../@components/UI/LoadingPage';
+import { modalSelector } from '../@store/modal/selectors';
+import { clearImageData } from '../@store/modal/slice';
 import { picturesSelector } from '../@store/pictures/selectors';
-import {
-  clearImageData,
-  incrementPage,
-  picturesTC,
-} from '../@store/pictures/slice';
+import { incrementPage, picturesTC } from '../@store/pictures/slice';
 
 export const AppContainer: React.FC = () => {
   const dispatch = useDispatch();
@@ -18,10 +16,9 @@ export const AppContainer: React.FC = () => {
     loading: picturesLoading,
     page,
     pictureSearch,
-    largeImageURL,
-    tags,
     data: { hits },
   } = useSelector(picturesSelector);
+  const { largeImageURL, tags } = useSelector(modalSelector);
 
   useEffect(() => {
     dispatch(picturesTC({ pictureSearch, page }));
