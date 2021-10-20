@@ -12,16 +12,16 @@ export const pokemonApi = createApi({
     baseUrl: API_URL,
   }),
   endpoints: (builder) => ({
-    getPokemonByName: builder.query<Pokemon, string>({
+    getPokemonByName: builder.query<Pokemon, number>({
       //   query: (name) => `pokemon/${name}`,
-      query: (name) => ({
+      query: (page) => ({
         url: `/`,
         params: {
           key: API_KEY,
           image_type: 'photo',
           orientation: 'horizontal',
           per_page: 12,
-          page: 1,
+          page,
         },
       }),
     }),
