@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { API_KEY, API_URL } from '../../@api/api';
+import { axiosBaseQuery } from '../axiosBaseQuery';
 
 interface Pokemon {
   [x: string]: any;
@@ -8,21 +9,25 @@ interface Pokemon {
 // Define a service using a base URL and expected endpoints
 export const pokemonApi = createApi({
   reducerPath: 'pokemonApi',
-  baseQuery: fetchBaseQuery({
+  // baseQuery: fetchBaseQuery({
+  //   baseUrl: API_URL,
+  // }),
+  baseQuery: axiosBaseQuery({
     baseUrl: API_URL,
   }),
   endpoints: (builder) => ({
     getPokemonByName: builder.query<Pokemon, number>({
-      //   query: (name) => `pokemon/${name}`,
+      // query: (page) => ({ url: '/', method: 'get' }),
       query: (page) => ({
-        url: `/`,
-        params: {
-          key: API_KEY,
-          image_type: 'photo',
-          orientation: 'horizontal',
-          per_page: 12,
-          page,
-        },
+        url: `/?page=${page}`,
+        // params: {
+        //   key: API_KEY,
+        //   image_type: 'photo',
+        //   orientation: 'horizontal',
+        //   per_page: 12,
+        //   page,
+        // },
+        method: 'get',
       }),
     }),
   }),

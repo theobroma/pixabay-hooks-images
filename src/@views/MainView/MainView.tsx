@@ -81,7 +81,7 @@ const MainView: React.FC = () => {
   return (
     <Container maxWidth={false}>
       {/* {picturesLoading && <LoadingPage />} */}
-      <ImageGallery hits={hits} />
+      {hits && !isFetching && <ImageGallery hits={hits} />}
       <Box my={3}>
         <div className={classes.root}>
           <div className={classes.wrapper}>
