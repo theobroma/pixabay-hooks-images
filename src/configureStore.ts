@@ -12,6 +12,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { rootReducer } from './@store/index';
+import { modalSlice, modalReducer } from './@store/modal/slice';
 import { pokemonApi } from './@store/pictures/api';
 
 const logger = createLogger({
@@ -42,6 +43,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: {
+    [modalSlice.name]: modalReducer,
     // Add the generated reducer as a specific top-level slice
     [pokemonApi.reducerPath]: pokemonApi.reducer,
   },
