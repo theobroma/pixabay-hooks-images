@@ -1,16 +1,17 @@
 import { combineReducers, configureStore, Reducer } from '@reduxjs/toolkit';
-import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import {
-  persistStore,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
+  persistStore,
   PURGE,
   REGISTER,
+  REHYDRATE,
 } from 'redux-persist';
-import { modalSlice, modalReducer } from './modal/slice';
+import { RESET_STATE_ACTION_TYPE } from './actions/resetState';
+import { modalReducer, modalSlice } from './modal/slice';
 import { pokemonApi } from './pictures/api';
 
 const logger = createLogger({
@@ -25,9 +26,9 @@ const reducers = {
 const combinedReducer = combineReducers<typeof reducers>(reducers);
 
 export const rootReducer: Reducer<RootState> = (state, action) => {
-  // if (action.type === RESET_STATE_ACTION_TYPE) {
-  //   state = {} as RootState;
-  // }
+  if (action.type === RESET_STATE_ACTION_TYPE) {
+    state = {} as RootState;
+  }
 
   return combinedReducer(state, action);
 };
@@ -40,6 +41,8 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }).concat(logger, pokemonApi.middleware),
+  // devTools: process.env.NODE_ENV === 'development',
+  devTools: true,
 });
 
 export const persistor = persistStore(store);
