@@ -10,8 +10,8 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { modalSlice, modalReducer } from './@store/modal/slice';
-import { pokemonApi } from './@store/pictures/api';
+import { modalSlice, modalReducer } from './modal/slice';
+import { pokemonApi } from './pictures/api';
 
 const logger = createLogger({
   collapsed: true,
