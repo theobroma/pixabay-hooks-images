@@ -12,9 +12,8 @@ import {
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { nanoid } from '@reduxjs/toolkit';
 import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setImageData } from '../../@store/modal/slice';
-import { picturesSelector } from '../../@store/pictures/selectors';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -46,8 +45,6 @@ interface Props {
 
 export const ImageGallery: React.FC<Props> = ({ hits }) => {
   const dispatch = useDispatch();
-  // const picturesData = useSelector(picturesSelector).data;
-  // const picturesHits = picturesData.hits;
 
   const classes = useStyles();
   const theme = useTheme();

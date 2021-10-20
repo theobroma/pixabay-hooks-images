@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import ImageGallery from '../../@components/ImageGallery';
 import LoadingPage from '../../@components/UI/LoadingPage';
 import { useGetPokemonByNameQuery } from '../../@store/pictures/api';
-import { picturesSelector } from '../../@store/pictures/selectors';
 import { incrementPage, picturesTC } from '../../@store/pictures/slice';
 
 const MainView: React.FC = () => {
@@ -35,7 +34,6 @@ const MainView: React.FC = () => {
 
   return (
     <Container maxWidth={false}>
-      cont
       {/* {picturesLoading && <LoadingPage />} */}
       <ImageGallery hits={data?.hits} />
       {/* {hits.length > 0 && (

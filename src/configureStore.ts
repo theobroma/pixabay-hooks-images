@@ -1,8 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore, Reducer } from '@reduxjs/toolkit';
+import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import {
   persistStore,
-  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -10,8 +10,6 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { rootReducer } from './@store/index';
 import { modalSlice, modalReducer } from './@store/modal/slice';
 import { pokemonApi } from './@store/pictures/api';
 
@@ -19,43 +17,36 @@ const logger = createLogger({
   collapsed: true,
 });
 
-const persistConfig = {
-  key: 'root',
-  storage,
-  // blacklist: ['filter'], // will not be persisted
-  whitelist: ['none'], // will be persisted
+const reducers = {
+  [modalSlice.name]: modalReducer,
+  [pokemonApi.reducerPath]: pokemonApi.reducer,
 };
 
-// Middleware: Redux Persist Persisted Reducer
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const combinedReducer = combineReducers<typeof reducers>(reducers);
 
-// export const store = configureStore({
-//   reducer: persistedReducer,
-//   middleware: (getDefaultMiddleware) =>
-//     getDefaultMiddleware({
-//       serializableCheck: {
-//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//       },
-//     }).concat(logger),
-//   // devTools: process.env.NODE_ENV === 'development',
-//   devTools: true,
-// });
+export const rootReducer: Reducer<RootState> = (state, action) => {
+  // if (action.type === RESET_STATE_ACTION_TYPE) {
+  //   state = {} as RootState;
+  // }
+
+  return combinedReducer(state, action);
+};
 
 export const store = configureStore({
-  reducer: {
-    [modalSlice.name]: modalReducer,
-    // Add the generated reducer as a specific top-level slice
-    [pokemonApi.reducerPath]: pokemonApi.reducer,
-  },
-  // Adding the api middleware enables caching, invalidation, polling,
-  // and other useful features of `rtk-query`.
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(pokemonApi.middleware),
+    }).concat(logger, pokemonApi.middleware),
 });
 
 export const persistor = persistStore(store);
-export default { store, persistor };
+
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof combinedReducer>;
+
+// Use throughout your app instead of plain `useDispatch` and `useSelector`
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

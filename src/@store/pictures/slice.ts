@@ -1,3 +1,4 @@
+// FILE NOT USED!!! Use RTKQ version instead
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { pictureAPI } from '../../@api/picture-api';
 import { PicturesDataType } from '../../@types';
