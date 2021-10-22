@@ -9,9 +9,9 @@ import {
 } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import ImageGallery from '../../@components/ImageGallery';
 import LoadingPage from '../../@components/UI/LoadingPage';
+import { useAppDispatch } from '../../@store/configureStore';
 import { useGetPokemonByNameQuery } from '../../@store/pictures/api';
 import { incrementPage, picturesTC } from '../../@store/pictures/slice';
 
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const MainView: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const classes = useStyles();
   const [page, setPage] = useState(1);
   // const {
@@ -46,7 +46,7 @@ const MainView: React.FC = () => {
   //   page,
   //   pictureSearch,
   //   data: { hits },
-  // } = useSelector(picturesSelector);
+  // } = useAppSelector(picturesSelector);
 
   const { data, error, isLoading, isFetching } = useGetPokemonByNameQuery(page);
   // const data = [] as any;

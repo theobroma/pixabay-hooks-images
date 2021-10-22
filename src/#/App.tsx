@@ -1,14 +1,14 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import MyModal from '../@components/Modal';
+import { useAppDispatch, useAppSelector } from '../@store/configureStore';
 import { modalSelector } from '../@store/modal/selectors';
 import { clearImageData } from '../@store/modal/slice';
 import MainView from '../@views/MainView';
 import { GuestLayout } from './Layouts';
 
 export const AppContainer: React.FC = () => {
-  const dispatch = useDispatch();
-  const { largeImageURL, tags } = useSelector(modalSelector);
+  const dispatch = useAppDispatch();
+  const { largeImageURL, tags } = useAppSelector(modalSelector);
 
   const toggleModal = () => {
     dispatch(clearImageData());

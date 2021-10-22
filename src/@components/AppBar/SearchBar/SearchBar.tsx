@@ -1,14 +1,14 @@
 // https://stackoverflow.com/questions/61528692/can-react-material-ui-inputbase-component-have-an-onsubmit-action
-import React from 'react';
+import InputBase from '@material-ui/core/InputBase';
 import {
+  alpha,
+  createStyles,
   makeStyles,
   Theme,
-  createStyles,
-  alpha,
 } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useAppDispatch } from '../../../@store/configureStore';
 import { setPictureSearch } from '../../../@store/pictures/slice';
 
 const useStyles = makeStyles((theme: Theme) => {
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme: Theme) => {
 
 const SearchBar: React.FC = () => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [searchValue, setSearchValue] = React.useState('');
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {

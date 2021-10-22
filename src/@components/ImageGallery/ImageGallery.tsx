@@ -12,7 +12,7 @@ import {
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { nanoid } from '@reduxjs/toolkit';
 import * as React from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../../@store/configureStore';
 import { setImageData } from '../../@store/modal/slice';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -44,7 +44,7 @@ interface Props {
 }
 
 export const ImageGallery: React.FC<Props> = ({ hits }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const classes = useStyles();
   const theme = useTheme();
