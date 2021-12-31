@@ -1,12 +1,13 @@
 export interface PicturesDataType {
-  hits: HitsEntity[];
+  hits: HitsEntityType[];
   total: number;
   totalHits: number;
 }
-export interface HitsEntity {
+export interface HitsEntityType {
+  collections: number; // new
   comments: number;
   downloads: number;
-  favorites: number;
+  // favorites: number; deprecated
   id: number;
   imageHeight: number;
   imageSize: number;

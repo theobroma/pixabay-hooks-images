@@ -12,8 +12,9 @@ import {
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { nanoid } from '@reduxjs/toolkit';
 import * as React from 'react';
-import { useAppDispatch } from '../../@store/configureStore';
 import { setImageData } from '../../@features/AppModal/store/slice';
+import { useAppDispatch } from '../../@store/configureStore';
+import { HitsEntityType } from '../../@types';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -40,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface Props {
-  hits: any;
+  hits: HitsEntityType[];
 }
 
 export const ImageGallery: React.FC<Props> = ({ hits }) => {
@@ -88,7 +89,7 @@ export const ImageGallery: React.FC<Props> = ({ hits }) => {
         gap={1}
         className={classes.gridList}
       >
-        {hits?.map((tile: any) => (
+        {hits?.map((tile) => (
           <ImageListItem
             //  key={tile.id}
             key={nanoid()}
