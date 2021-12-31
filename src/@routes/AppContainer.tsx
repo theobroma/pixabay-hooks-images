@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../@store/configureStore';
 import { modalSelector } from '../@store/modal/selectors';
 import { clearImageData } from '../@store/modal/slice';
 import MainView from '../@views/MainView';
-import { GuestLayout } from './Layouts';
+import { AppLayout } from './AppLayout';
 
 export const AppContainer: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -15,7 +15,7 @@ export const AppContainer: React.FC = () => {
   };
 
   return (
-    <GuestLayout>
+    <AppLayout>
       <MainView />
       {largeImageURL && (
         <MyModal onClose={toggleModal}>
@@ -23,6 +23,6 @@ export const AppContainer: React.FC = () => {
           <img src={largeImageURL} alt={tags} />
         </MyModal>
       )}
-    </GuestLayout>
+    </AppLayout>
   );
 };
