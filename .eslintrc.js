@@ -14,9 +14,18 @@ module.exports = {
         'no-console': 0,
         'no-param-reassign': 0,
         'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
+        'no-restricted-exports': 0, // Nothing to restrict.
         'no-underscore-dangle': 0,
         'react-hooks/exhaustive-deps': 'warn',
         'react-hooks/rules-of-hooks': 'error',
+        'react/function-component-definition': [
+            2,
+            {
+                namedComponents: 'arrow-function',
+                unnamedComponents: 'arrow-function',
+            },
+        ],
+        'react/jsx-no-useless-fragment':['error', { allowExpressions: true }],
         'react/jsx-props-no-spreading': 0,
         'react/prop-types': 0, // Since we do not use prop-types
         'react/require-default-props': 0, // Since we do not use prop-types

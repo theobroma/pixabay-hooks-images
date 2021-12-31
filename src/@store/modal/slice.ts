@@ -5,7 +5,7 @@ const modalInitialState = {
   tags: '' as string,
 };
 
-export const slice = createSlice({
+export const modalSlice = createSlice({
   name: 'modal',
   initialState: modalInitialState,
   reducers: {
@@ -20,5 +20,5 @@ export const slice = createSlice({
   },
 });
 
-export const modalReducer = slice.reducer;
-export const { setImageData, clearImageData } = slice.actions;
+export const modalReducer = modalSlice.reducer;
+export const { setImageData, clearImageData } = modalSlice.actions;

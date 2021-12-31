@@ -3,8 +3,8 @@ import { render } from 'react-dom';
 import './index.css';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { AppContainer } from './#/App';
-import { store, persistor } from './configureStore';
+import { AppContainer } from './@routes/AppContainer';
+import { store, persistor } from './@store/configureStore';
 import LoadingPage from './@components/UI/LoadingPage';
 import AppThemeProvider from './@themes/theme';
 import reportWebVitals from './reportWebVitals';
@@ -23,15 +23,15 @@ const rootEl = document.getElementById('root');
 render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate
+      {/* <PersistGate
         loading={<LoadingPage />}
         persistor={persistor}
         onBeforeLift={() => new Promise((resolve) => setTimeout(resolve, 10))} // delay
-      >
-        <AppThemeProvider>
-          <AppContainer />
-        </AppThemeProvider>
-      </PersistGate>
+      > */}
+      <AppThemeProvider>
+        <AppContainer />
+      </AppThemeProvider>
+      {/* </PersistGate> */}
     </Provider>
   </React.StrictMode>,
   rootEl,
