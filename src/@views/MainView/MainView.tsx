@@ -56,7 +56,9 @@ const MainView: React.FC = () => {
   // console.log(data);
   // console.log(error);
   // console.log('isLoading', isLoading); // Можна використовувати при першій загрузці
-  console.log('isFetching', isFetching); // Можна використовувати при наступних загрузках для видалення попередніх даних
+
+  // console.log('isFetching', isFetching); // Можна використовувати при наступних загрузках для видалення попередніх даних
+
   // console.log(isError);
   // console.log(isUninitialized);
   // console.log(isSuccess);
