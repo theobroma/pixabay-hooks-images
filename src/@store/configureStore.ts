@@ -11,7 +11,7 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 import { RESET_STATE_ACTION_TYPE } from './actions/resetState';
-import { modalReducer, modalSlice } from './modal/slice';
+import { modalReducer, modalSlice } from '../@features/AppModal/store/slice';
 import { pokemonApi } from './pictures/api';
 
 const logger = createLogger({

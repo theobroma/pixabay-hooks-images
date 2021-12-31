@@ -13,7 +13,7 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { nanoid } from '@reduxjs/toolkit';
 import * as React from 'react';
 import { useAppDispatch } from '../../@store/configureStore';
-import { setImageData } from '../../@store/modal/slice';
+import { setImageData } from '../../@features/AppModal/store/slice';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
