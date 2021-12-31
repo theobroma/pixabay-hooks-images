@@ -19,7 +19,6 @@ export const AppContainer: React.FC = () => {
       <MainView />
       {largeImageURL && (
         <MyModal onClose={toggleModal}>
-          123
           <img src={largeImageURL} alt={tags} />
         </MyModal>
       )}
