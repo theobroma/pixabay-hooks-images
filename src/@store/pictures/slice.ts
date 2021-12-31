@@ -1,7 +1,7 @@
 // FILE NOT USED!!! Use RTKQ version instead
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { pictureAPI } from '../../@api/picture-api';
-import { PicturesDataType } from '../../@types';
+import { PicturesDataResponseType } from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
 
 const picturesInitialState = {
@@ -9,13 +9,13 @@ const picturesInitialState = {
     total: 0,
     totalHits: 0,
     hits: [],
-  } as PicturesDataType,
+  } as PicturesDataResponseType,
   loading: false,
   page: 1,
   pictureSearch: 'nature',
 };
 export const picturesTC = createAsyncThunk<
-  PicturesDataType,
+  PicturesDataResponseType,
   { pictureSearch: string; page: number },
   any
 >('pictures/picturesTC', async (param, thunkAPI) => {
