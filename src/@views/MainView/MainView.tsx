@@ -1,46 +1,29 @@
-import {
-  Box,
-  Button,
-  CircularProgress,
-  Container,
-  createStyles,
-  makeStyles,
-  Theme,
-} from '@material-ui/core';
-import { green } from '@material-ui/core/colors';
+// https://stackoverflow.com/questions/69499487/rtk-query-pagination-and-combine-queries
+import { Box, Container } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import ImageGallery from '../../@components/ImageGallery';
 import LoadingPage from '../../@components/UI/LoadingPage';
 import { useAppDispatch } from '../../@store/configureStore';
 import { useGetPokemonByNameQuery } from '../../@store/pictures/api';
-import { incrementPage, picturesTC } from '../../@store/pictures/slice';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    wrapper: {
-      margin: theme.spacing(1),
-      position: 'relative',
-    },
-    buttonProgress: {
-      // color: green[500],
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      marginTop: -12,
-      marginLeft: -12,
-    },
-  }),
-);
+import { HitsEntityType } from '../../@types';
+import LoadMoreButton from './LoadMoreButton';
 
 const MainView: React.FC = () => {
   const dispatch = useAppDispatch();
-  const classes = useStyles();
+
+  const [noMoreResults, setNoMoreResults] = useState(false);
   const [page, setPage] = useState(1);
+  const [hits, setHits] = useState<HitsEntityType[]>([]);
+
+  const {
+    data = [],
+    error,
+    isLoading,
+    isFetching,
+  } = useGetPokemonByNameQuery(page, {
+    skip: noMoreResults,
+  });
+
   // const {
   //   loading: picturesLoading,
   //   page,
@@ -48,25 +31,29 @@ const MainView: React.FC = () => {
   //   data: { hits },
   // } = useAppSelector(picturesSelector);
 
-  const { data, error, isLoading, isFetching } = useGetPokemonByNameQuery(page);
+  // const { data, error, isLoading, isFetching } = useGetPokemonByNameQuery(page);
+
   // const data = [] as any;
   // const isFetching = true;
-  const hits = data?.hits;
 
-  // console.log(data);
-  // console.log(error);
-  // console.log('isLoading', isLoading); // Можна використовувати при першій загрузці
-
-  // console.log('isFetching', isFetching); // Можна використовувати при наступних загрузках для видалення попередніх даних
-
-  // console.log(isError);
-  // console.log(isUninitialized);
-  // console.log(isSuccess);
-  // console.log(refetch);
+  // const hits = data?.hits;
 
   // useEffect(() => {
   //   dispatch(picturesTC({ pictureSearch, page }));
   // }, [dispatch, pictureSearch, page]);
+
+  useEffect(() => {
+    if (data?.hits?.length) {
+      setHits([...hits, ...data.hits]);
+    } else if (page > 1) {
+      setNoMoreResults(true);
+    }
+  }, [data]); // yes!'data' only
+
+  useEffect(() => {
+    console.log(data);
+    console.log(hits);
+  }, [hits, data]);
 
   useEffect(() => {
     window.scrollTo({
@@ -82,24 +69,10 @@ const MainView: React.FC = () => {
 
   return (
     <Container maxWidth={false}>
-      {/* {picturesLoading && <LoadingPage />} */}
-      {hits && !isFetching && <ImageGallery hits={hits} />}
+      {isFetching && <LoadingPage />}
+      {hits && <ImageGallery hits={hits} />}
       <Box my={3}>
-        <div className={classes.root}>
-          <div className={classes.wrapper}>
-            <Button
-              variant="contained"
-              color="primary"
-              disabled={isFetching}
-              onClick={() => handleLoadMore()}
-            >
-              Load more
-            </Button>
-            {isFetching && (
-              <CircularProgress size={24} className={classes.buttonProgress} />
-            )}
-          </div>
-        </div>
+        <LoadMoreButton isFetching={isFetching} handleClick={handleLoadMore} />
       </Box>
     </Container>
   );

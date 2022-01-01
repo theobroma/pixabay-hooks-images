@@ -2,10 +2,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { API_KEY, API_URL } from '../../@api/api';
 import { axiosBaseQuery } from '../axiosBaseQuery';
 
-interface Pokemon {
-  [x: string]: any;
-}
-
 // Define a service using a base URL and expected endpoints
 export const pokemonApi = createApi({
   reducerPath: 'pokemonApi',
@@ -16,7 +12,7 @@ export const pokemonApi = createApi({
     baseUrl: API_URL,
   }),
   endpoints: (builder) => ({
-    getPokemonByName: builder.query<Pokemon, number>({
+    getPokemonByName: builder.query<any, number>({
       // query: (page) => ({ url: '/', method: 'get' }),
       query: (page) => ({
         url: `/?page=${page}`,
