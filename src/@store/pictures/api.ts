@@ -1,18 +1,15 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { API_KEY, API_URL } from '../../@api/api';
+import { createApi } from '@reduxjs/toolkit/query/react';
+import { API_URL } from '../../@api/api';
 import { axiosBaseQuery } from '../axiosBaseQuery';
 
 // Define a service using a base URL and expected endpoints
-export const pokemonApi = createApi({
-  reducerPath: 'pokemonApi',
-  // baseQuery: fetchBaseQuery({
-  //   baseUrl: API_URL,
-  // }),
+export const picturesApi = createApi({
+  reducerPath: 'picturesApi',
   baseQuery: axiosBaseQuery({
     baseUrl: API_URL,
   }),
   endpoints: (builder) => ({
-    getPokemonByName: builder.query<any, number>({
+    getPictures: builder.query<any, number>({
       // query: (page) => ({ url: '/', method: 'get' }),
       query: (page) => ({
         url: `/?page=${page}`,
@@ -31,4 +28,4 @@ export const pokemonApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetPokemonByNameQuery } = pokemonApi;
+export const { useGetPicturesQuery } = picturesApi;

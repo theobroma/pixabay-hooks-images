@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import ImageGallery from '../../@components/ImageGallery';
 import LoadingPage from '../../@components/UI/LoadingPage';
 import { useAppDispatch } from '../../@store/configureStore';
-import { useGetPokemonByNameQuery } from '../../@store/pictures/api';
+import { useGetPicturesQuery } from '../../@store/pictures/api';
 import { HitsEntityType } from '../../@types';
 import LoadMoreButton from './LoadMoreButton';
 
@@ -20,7 +20,7 @@ const MainView: React.FC = () => {
     error,
     isLoading,
     isFetching,
-  } = useGetPokemonByNameQuery(page, {
+  } = useGetPicturesQuery(page, {
     skip: noMoreResults,
   });
 
@@ -31,7 +31,7 @@ const MainView: React.FC = () => {
   //   data: { hits },
   // } = useAppSelector(picturesSelector);
 
-  // const { data, error, isLoading, isFetching } = useGetPokemonByNameQuery(page);
+  // const { data, error, isLoading, isFetching } = useGetPicturesQuery(page);
 
   // const data = [] as any;
   // const isFetching = true;
@@ -50,10 +50,10 @@ const MainView: React.FC = () => {
     }
   }, [data]); // yes!'data' only
 
-  useEffect(() => {
-    console.log(data);
-    console.log(hits);
-  }, [hits, data]);
+  // useEffect(() => {
+  //   console.log(data);
+  //   console.log(hits);
+  // }, [hits, data]);
 
   useEffect(() => {
     window.scrollTo({

@@ -12,7 +12,7 @@ import {
 } from 'redux-persist';
 import { RESET_STATE_ACTION_TYPE } from './actions/resetState';
 import { modalReducer, modalSlice } from '../@features/AppModal/store/slice';
-import { pokemonApi } from './pictures/api';
+import { picturesApi } from './pictures/api';
 
 const logger = createLogger({
   collapsed: true,
@@ -20,7 +20,7 @@ const logger = createLogger({
 
 const reducers = {
   [modalSlice.name]: modalReducer,
-  [pokemonApi.reducerPath]: pokemonApi.reducer,
+  [picturesApi.reducerPath]: picturesApi.reducer,
 };
 
 const combinedReducer = combineReducers<typeof reducers>(reducers);
@@ -40,7 +40,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(logger, pokemonApi.middleware),
+    }).concat(logger, picturesApi.middleware),
   // devTools: process.env.NODE_ENV === 'development',
   devTools: true,
 });

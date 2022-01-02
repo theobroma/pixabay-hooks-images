@@ -36,6 +36,7 @@ export const HitsEntitySchema = z.object({
   collections: z.number(),
   comments: z.number(),
   downloads: z.number(),
+  // favorites: z.number(),
   id: z.number(),
   imageHeight: z.number(),
   imageSize: z.number(),
