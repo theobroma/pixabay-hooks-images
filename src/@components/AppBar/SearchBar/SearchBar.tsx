@@ -1,60 +1,10 @@
 // https://stackoverflow.com/questions/61528692/can-react-material-ui-inputbase-component-have-an-onsubmit-action
 import InputBase from '@material-ui/core/InputBase';
-import {
-  alpha,
-  createStyles,
-  makeStyles,
-  Theme,
-} from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import React from 'react';
 import { useAppDispatch } from '../../../@store/configureStore';
 import { setPictureSearch } from '../../../@store/pictures/slice';
-
-const useStyles = makeStyles((theme: Theme) => {
-  // console.log(theme); // print mui global theme object
-  return {
-    ...createStyles({
-      search: {
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: alpha(theme.palette.common.white, 0.15),
-        '&:hover': {
-          backgroundColor: alpha(theme.palette.common.white, 0.25),
-        },
-        marginRight: theme.spacing(2),
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-          marginLeft: theme.spacing(3),
-          width: 'auto',
-        },
-      },
-      searchIcon: {
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-      inputRoot: {
-        color: 'inherit',
-      },
-      inputInput: {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-          width: '20ch',
-        },
-      },
-    }),
-  };
-});
+import { useStyles } from './SearchBar.styles';
 
 const SearchBar: React.FC = () => {
   const classes = useStyles();
