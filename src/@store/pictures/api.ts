@@ -1,25 +1,17 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { API_URL } from '../../@api/api';
+import { PicturesDataResponseType } from '../../@types';
 import { axiosBaseQuery } from '../axiosBaseQuery';
 
-// Define a service using a base URL and expected endpoints
 export const picturesApi = createApi({
   reducerPath: 'picturesApi',
   baseQuery: axiosBaseQuery({
     baseUrl: API_URL,
   }),
   endpoints: (builder) => ({
-    getPictures: builder.query<any, number>({
-      // query: (page) => ({ url: '/', method: 'get' }),
+    getPictures: builder.query<PicturesDataResponseType, number>({
       query: (page) => ({
-        url: `/?page=${page}`,
-        // params: {
-        //   key: API_KEY,
-        //   image_type: 'photo',
-        //   orientation: 'horizontal',
-        //   per_page: 12,
-        //   page,
-        // },
+        url: `/?q=nature&image_type=photo&orientation=horizontal&per_page=12&page=${page}`,
         method: 'get',
       }),
     }),

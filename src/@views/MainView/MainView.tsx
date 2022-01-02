@@ -15,14 +15,12 @@ const MainView: React.FC = () => {
   const [page, setPage] = useState(1);
   const [hits, setHits] = useState<HitsEntityType[]>([]);
 
-  const {
-    data = [],
-    error,
-    isLoading,
-    isFetching,
-  } = useGetPicturesQuery(page, {
-    skip: noMoreResults,
-  });
+  const { data, error, isLoading, isFetching, isError } = useGetPicturesQuery(
+    page,
+    {
+      skip: noMoreResults,
+    },
+  );
 
   // const {
   //   loading: picturesLoading,
@@ -66,6 +64,8 @@ const MainView: React.FC = () => {
     // dispatch(incrementPage());
     setPage(page + 1);
   };
+
+  if (isError) return <div>An error has occurred!</div>;
 
   return (
     <Container maxWidth={false}>
