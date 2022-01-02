@@ -3,7 +3,7 @@ import {
   Theme,
   createStyles,
   Button,
-  CircularProgress,
+  // CircularProgress,
 } from '@material-ui/core';
 import * as React from 'react';
 
@@ -50,9 +50,9 @@ export const LoadMoreButton: React.FC<Props> = ({
         >
           Load more
         </Button>
-        {isFetching && (
+        {/* {isFetching && (
           <CircularProgress size={24} className={classes.buttonProgress} />
-        )}
+        )} */}
       </div>
     </div>
   );

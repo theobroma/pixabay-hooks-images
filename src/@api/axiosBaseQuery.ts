@@ -1,18 +1,9 @@
 // https://redux-toolkit.js.org/rtk-query/usage/customizing-queries#axios-basequery
 import { BaseQueryFn } from '@reduxjs/toolkit/dist/query';
-import axios, { AxiosRequestConfig, AxiosError } from 'axios';
+import { AxiosError, AxiosRequestConfig } from 'axios';
 import { PicturesDataResponseSchema } from '../@types';
 import { waitForMe } from '../@utils/waitforme';
-
-export const API_KEY = '21006895-bfaaa89652a3d7d5175478097';
-export const API_URL = 'https://pixabay.com/api';
-
-export const pixabayAxiosInstance = axios.create({
-  baseURL: API_URL,
-  params: {
-    key: API_KEY,
-  },
-});
+import { pixabayAxiosInstance } from './api';
 
 export const axiosBaseQuery =
   (
@@ -38,8 +29,9 @@ export const axiosBaseQuery =
       try {
         PicturesDataResponseSchema.parse(res.data);
       } catch (error) {
-        console.log(error);
+        // TODO:
         // Log & alert error <-- very important!
+        console.log(error);
       }
 
       return { data: res.data };

@@ -1,7 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { API_URL } from '../../@api/api';
 import { PicturesDataResponseType } from '../../@types';
-import { axiosBaseQuery } from '../axiosBaseQuery';
+import { axiosBaseQuery } from '../../@api/axiosBaseQuery';
 
 export const picturesApi = createApi({
   reducerPath: 'picturesApi',
