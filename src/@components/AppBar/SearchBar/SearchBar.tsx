@@ -6,7 +6,7 @@ import { useAppDispatch } from '../../../@store/configureStore';
 import { setPictureSearch } from '../../../@store/pictures/slice';
 import { useStyles } from './SearchBar.styles';
 
-const SearchBar: React.FC = () => {
+const SearchBar = () => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
   const [searchValue, setSearchValue] = React.useState('');

@@ -3,7 +3,7 @@ import AppModal from '../@features/AppModal';
 import MainView from '../@views/MainView';
 import { AppLayout } from './AppLayout';
 
-export const AppContainer: React.FC = () => {
+export const AppContainer = () => {
   return (
     <AppLayout>
       <MainView />
