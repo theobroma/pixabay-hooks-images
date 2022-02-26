@@ -6,7 +6,7 @@ import LoadingPage from '../../@components/UI/LoadingPage';
 import { useAppDispatch } from '../../@store/configureStore';
 import { useGetPicturesQuery } from '../../@store/pictures/api';
 import { HitsEntityType } from '../../@types';
-import LoadMoreButton from './LoadMoreButton';
+import LoadMoreButton from '../../@components/LoadMoreButton';
 
 const MainView: React.FC = () => {
   const dispatch = useAppDispatch();

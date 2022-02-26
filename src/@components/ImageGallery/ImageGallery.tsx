@@ -16,7 +16,8 @@ import { HitsEntityType } from '../../@types';
 import { useStyles } from './ImageGallery.styles';
 
 interface Props {
-  hits: HitsEntityType[];
+  // hits: HitsEntityType[];
+  hits: any;
 }
 
 export const ImageGallery: React.FC<Props> = ({ hits }) => {
@@ -63,7 +64,7 @@ export const ImageGallery: React.FC<Props> = ({ hits }) => {
         gap={1}
         className={classes.gridList}
       >
-        {hits?.map((tile) => (
+        {hits?.map((tile: HitsEntityType) => (
           <ImageListItem
             //  key={tile.id}
             key={nanoid()}
