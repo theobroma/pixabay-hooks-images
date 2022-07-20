@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
 import { modalSelector } from './store/selectors';
 import { clearImageData } from './store/slice';
 
-export const AppModal: React.FC = () => {
+export const AppModal = () => {
   const dispatch = useAppDispatch();
   const { largeImageURL, tags } = useAppSelector(modalSelector);
 

@@ -8,7 +8,7 @@ import { useAppDispatch } from '../../@store/configureStore';
 import { useGetPicturesQuery } from '../../@store/pictures/api';
 import LoadMoreButton from '../../@components/LoadMoreButton';
 
-const MainView2: React.FC = () => {
+const MainView2 = () => {
   const dispatch = useAppDispatch();
 
   const [page, setPage] = useState(1);

@@ -117,7 +117,7 @@ const themeMap = {
   pinkBlueGrey: PINK_BLUE_GREY_THEME,
 };
 
-const AppThemeProvider: React.FC = ({ children }) => {
+const AppThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const currentTheme = 'light';
   const theme = createTheme(themeMap[currentTheme]);
   return (

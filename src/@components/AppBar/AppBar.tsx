@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) => {
   };
 });
 
-export const PrimarySearchAppBar: React.FC = () => {
+export const PrimarySearchAppBar = () => {
   const classes = useStyles();
 
   return (

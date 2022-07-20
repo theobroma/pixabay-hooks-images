@@ -20,7 +20,7 @@ interface Props {
   hits: any;
 }
 
-export const ImageGallery: React.FC<Props> = ({ hits }) => {
+export const ImageGallery = ({ hits }: Props) => {
   const dispatch = useAppDispatch();
   const classes = useStyles();
   const theme = useTheme();

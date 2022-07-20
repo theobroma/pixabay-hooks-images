@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const LoadingPage: React.FC = () => {
+export const LoadingPage = () => {
   const classes = useStyles();
   return (
     <Backdrop className={classes.backdrop} open>

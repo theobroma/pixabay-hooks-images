@@ -34,10 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export const LoadMoreButton: React.FC<Props> = ({
-  isFetching,
-  handleClick,
-}) => {
+export const LoadMoreButton = ({ isFetching, handleClick }: Props) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>

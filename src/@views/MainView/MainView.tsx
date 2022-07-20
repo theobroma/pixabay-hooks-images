@@ -8,7 +8,7 @@ import { useGetPicturesQuery } from '../../@store/pictures/api';
 import { HitsEntityType } from '../../@types';
 import LoadMoreButton from '../../@components/LoadMoreButton';
 
-const MainView: React.FC = () => {
+const MainView = () => {
   const dispatch = useAppDispatch();
 
   const [noMoreResults, setNoMoreResults] = useState(false);

@@ -2,9 +2,18 @@ import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import s from './Modal.module.css';
 
+type Props = {
+  onClose: () => void;
+  children: React.ReactNode;
+};
+
+interface IKeyboardEvent {
+  code: string;
+}
+
 const modalRoot = document.querySelector('#modal-root') as Element;
 
-const MyModal: React.FC<Props> = ({ onClose, children }) => {
+const MyModal = ({ onClose, children }: Props) => {
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
@@ -43,11 +52,3 @@ const MyModal: React.FC<Props> = ({ onClose, children }) => {
 };
 
 export default MyModal;
-
-type Props = {
-  onClose: () => void;
-};
-
-interface IKeyboardEvent {
-  code: string;
-}
