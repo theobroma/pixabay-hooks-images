@@ -1,7 +1,10 @@
 // FILE NOT USED!!! Use RTKQ version instead
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { pictureAPI } from '../../@api/picture-api';
-import { PicturesDataResponseType } from '../../@types';
+import {
+  PicturesDataResponseSchema,
+  PicturesDataResponseType,
+} from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
 
 const picturesInitialState = {
@@ -23,6 +26,14 @@ export const picturesTC = createAsyncThunk<
   try {
     await waitForMe(1000);
     const res = await pictureAPI.fetchImages(param.pictureSearch, param.page);
+
+    // ZOD validation
+    try {
+      PicturesDataResponseSchema.parse(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+
     return res.data;
   } catch (err: any) {
     return thunkAPI.rejectWithValue(err.response.data);
@@ -31,7 +42,7 @@ export const picturesTC = createAsyncThunk<
   }
 });
 
-export const slice = createSlice({
+export const picturesSlice = createSlice({
   name: 'pictures',
   initialState: picturesInitialState,
   reducers: {
@@ -59,5 +70,6 @@ export const slice = createSlice({
   },
 });
 
-export const picturesReducer = slice.reducer;
-export const { setLoading, incrementPage, setPictureSearch } = slice.actions;
+export const picturesReducer = picturesSlice.reducer;
+export const { setLoading, incrementPage, setPictureSearch } =
+  picturesSlice.actions;

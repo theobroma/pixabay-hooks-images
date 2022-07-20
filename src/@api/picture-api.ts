@@ -1,4 +1,3 @@
-// FILE NOT USED!!! Use RTKQ version instead
 import { PicturesDataResponseType } from '../@types';
 import { pixabayAxiosInstance } from './api';
 

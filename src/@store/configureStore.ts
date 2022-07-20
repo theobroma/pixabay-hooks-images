@@ -10,9 +10,9 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
-import { RESET_STATE_ACTION_TYPE } from './actions/resetState';
 import { modalReducer, modalSlice } from '../@features/AppModal/store/slice';
-import { picturesApi } from './pictures/api';
+import { RESET_STATE_ACTION_TYPE } from './actions/resetState';
+import { picturesReducer, picturesSlice } from './pictures/slice';
 
 const logger = createLogger({
   collapsed: true,
@@ -20,7 +20,7 @@ const logger = createLogger({
 
 const reducers = {
   [modalSlice.name]: modalReducer,
-  [picturesApi.reducerPath]: picturesApi.reducer,
+  [picturesSlice.name]: picturesReducer,
 };
 
 const combinedReducer = combineReducers<typeof reducers>(reducers);
@@ -40,7 +40,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(logger, picturesApi.middleware),
+    }).concat(logger),
   // devTools: process.env.NODE_ENV === 'development',
   devTools: true,
 });
