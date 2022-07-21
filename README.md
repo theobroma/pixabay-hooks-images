@@ -1,11 +1,18 @@
 # PixaBay Image Finder
 
-##### React & Material UI v4 app to find images utilizing the PixaBay API
+##### React & Material UI app to find images utilizing the PixaBay API
 
-Register your API Key at
+Register your API Key at :
 [https://pixabay.com/](https://pixabay.com/)
 
-## Quick Start
+## :high_brightness: Built With
+
+This project was built using these technologies.
+
+- React.js v17
+- [Material UI v4](https://v4.mui.com/ru/)
+
+## :hammer_and_wrench: Quick Start
 
 ```bash
 # Install dependencies
@@ -24,7 +31,7 @@ npm run format
 npm run lint
 ```
 
-## Deploy to GitHub Pages
+## :blue_book: Deploy to GitHub Pages
 
 ```bash
 # Change "homepage"
@@ -34,6 +41,6 @@ npm run lint
 npm run deploy
 ```
 
-## Useful links
+## :sunrise_over_mountains: Useful links
 
 - [React folder structure for enterprise level applications](https://engineering.udacity.com/react-folder-structure-for-enterprise-level-applications-f8384eff162b)
