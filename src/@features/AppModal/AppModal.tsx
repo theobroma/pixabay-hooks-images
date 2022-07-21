@@ -2,14 +2,14 @@ import * as React from 'react';
 import MyModal from './Modal';
 import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
 import { modalSelector } from './store/selectors';
-import { clearImageData } from './store/slice';
+import { resetModalStateAC } from './store/slice';
 
 export const AppModal = () => {
   const dispatch = useAppDispatch();
   const { largeImageURL, tags } = useAppSelector(modalSelector);
 
   const toggleModal = () => {
-    dispatch(clearImageData());
+    dispatch(resetModalStateAC());
   };
   return (
     <>

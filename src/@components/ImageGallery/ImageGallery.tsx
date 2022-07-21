@@ -16,8 +16,8 @@ import { HitsEntityType } from '../../@types';
 import { useStyles } from './ImageGallery.styles';
 
 interface Props {
-  // hits: HitsEntityType[];
-  hits: any;
+  hits: HitsEntityType[];
+  // hits: any;
 }
 
 export const ImageGallery = ({ hits }: Props) => {
