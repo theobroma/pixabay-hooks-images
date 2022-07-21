@@ -1,11 +1,16 @@
-// FILE NOT USED!!! Use RTKQ version instead
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+  AnyAction,
+  createAsyncThunk,
+  createSlice,
+  PayloadAction,
+} from '@reduxjs/toolkit';
 import { pictureAPI } from '../../@api/picture-api';
 import {
   PicturesDataResponseSchema,
   PicturesDataResponseType,
 } from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
+import type { RootState } from '../configureStore';
 
 const picturesInitialState = {
   data: {
@@ -13,19 +18,25 @@ const picturesInitialState = {
     totalHits: 0,
     hits: [],
   } as PicturesDataResponseType,
-  loading: false,
-  page: 1,
   pictureSearch: 'nature',
+  // utils
+  isFetching: false,
+  isSuccess: false,
+  isError: false,
+  error: '' as string | null,
 };
 export const picturesTC = createAsyncThunk<
   PicturesDataResponseType,
-  { pictureSearch: string; page: number },
-  any
+  { page: number },
+  { state: RootState }
 >('pictures/picturesTC', async (param, thunkAPI) => {
-  thunkAPI.dispatch(setLoading(true));
   try {
+    const state = thunkAPI.getState();
     await waitForMe(1000);
-    const res = await pictureAPI.fetchImages(param.pictureSearch, param.page);
+    const res = await pictureAPI.fetchImages(
+      state.pictures.pictureSearch,
+      param.page,
+    );
 
     // ZOD validation
     try {
@@ -37,8 +48,6 @@ export const picturesTC = createAsyncThunk<
     return res.data;
   } catch (err: any) {
     return thunkAPI.rejectWithValue(err.response.data);
-  } finally {
-    thunkAPI.dispatch(setLoading(false));
   }
 });
 
@@ -46,30 +55,41 @@ export const picturesSlice = createSlice({
   name: 'pictures',
   initialState: picturesInitialState,
   reducers: {
-    setLoading(state, action) {
-      state.loading = action.payload;
-    },
-    incrementPage(state) {
-      state.page += 1;
-    },
     setPictureSearch(state, action) {
       state.data.hits = []; // clear
-      state.page = 1;
       state.pictureSearch = action.payload;
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(picturesTC.fulfilled, (state, action) => {
-      if (action.payload) {
-        // state.data = action.payload.data;
-        state.data.total = action.payload.total;
-        state.data.totalHits = action.payload.totalHits;
-        state.data.hits.push(...action.payload.hits);
-      }
-    });
+    builder
+      .addCase(picturesTC.pending, (state) => {
+        state.isFetching = true;
+        //   clear data
+        state.isSuccess = false;
+        state.isError = false;
+        state.error = '';
+      })
+      .addCase(picturesTC.fulfilled, (state, action) => {
+        if (action.payload) {
+          state.data.total = action.payload.total;
+          state.data.totalHits = action.payload.totalHits;
+          state.data.hits.push(...action.payload.hits);
+        }
+        state.isFetching = false;
+        state.isSuccess = true;
+      })
+      // error
+      .addMatcher(isError, (state, action: PayloadAction<string>) => {
+        state.error = action.payload;
+        state.isError = true;
+        state.isFetching = false;
+      });
   },
 });
 
+function isError(action: AnyAction) {
+  return action.type.endsWith('rejected');
+}
+
 export const picturesReducer = picturesSlice.reducer;
-export const { setLoading, incrementPage, setPictureSearch } =
-  picturesSlice.actions;
+export const { setPictureSearch } = picturesSlice.actions;
