@@ -28,7 +28,7 @@ const picturesInitialState = {
 export const picturesTC = createAsyncThunk<
   PicturesDataResponseType,
   { page: number },
-  { state: RootState }
+  { state: RootState; rejectValue: string }
 >('pictures/picturesTC', async (param, thunkAPI) => {
   try {
     const state = thunkAPI.getState();
@@ -47,7 +47,11 @@ export const picturesTC = createAsyncThunk<
 
     return res.data;
   } catch (err: any) {
-    return thunkAPI.rejectWithValue(err.response.data);
+    // return thunkAPI.rejectWithValue(err.response.data);
+    return thunkAPI.rejectWithValue(
+      `Server Error fetching pictures. Error:
+      ${JSON.stringify(err.response.data)}`,
+    );
   }
 });
 
@@ -78,6 +82,13 @@ export const picturesSlice = createSlice({
         state.isFetching = false;
         state.isSuccess = true;
       })
+      // .addCase(picturesTC.rejected, (state, action) => {
+      //   if (action.payload) {
+      //     state.error = action.payload;
+      //   }
+      //   state.isError = true;
+      //   state.isFetching = false;
+      // })
       // error
       .addMatcher(isError, (state, action: PayloadAction<string>) => {
         state.error = action.payload;
