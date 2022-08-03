@@ -1,5 +1,7 @@
-import { Box } from '@material-ui/core';
 import React from 'react';
+
+import { Box } from '@material-ui/core';
+
 import { PrimarySearchAppBar } from '../@components/AppBar/AppBar';
 
 export const AppLayout = ({ children }: { children: React.ReactNode }) => {

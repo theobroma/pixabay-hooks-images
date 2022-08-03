@@ -1,14 +1,9 @@
-import {
-  AnyAction,
-  createAsyncThunk,
-  createSlice,
-  PayloadAction,
-} from '@reduxjs/toolkit';
+import type { AnyAction, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
 import { pictureAPI } from '../../@api/picture-api';
-import {
-  PicturesDataResponseSchema,
-  PicturesDataResponseType,
-} from '../../@types';
+import type { PicturesDataResponseType } from '../../@types';
+import { PicturesDataResponseSchema } from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
 import type { RootState } from '../configureStore';
 

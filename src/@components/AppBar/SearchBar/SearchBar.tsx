@@ -1,9 +1,12 @@
 // https://stackoverflow.com/questions/61528692/can-react-material-ui-inputbase-component-have-an-onsubmit-action
+import React from 'react';
+
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
-import React from 'react';
+
 import { useAppDispatch } from '../../../@store/configureStore';
 import { setPictureSearch } from '../../../@store/pictures/slice';
+
 import { useStyles } from './SearchBar.styles';
 
 const SearchBar = () => {

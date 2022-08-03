@@ -1,4 +1,5 @@
-import { makeStyles, Theme, createStyles, alpha } from '@material-ui/core';
+import type { Theme } from '@material-ui/core';
+import { alpha, createStyles, makeStyles } from '@material-ui/core';
 
 export const useStyles = makeStyles((theme: Theme) => {
   // console.log(theme); // print mui global theme object

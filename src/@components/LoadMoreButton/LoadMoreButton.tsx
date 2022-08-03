@@ -1,11 +1,12 @@
+import * as React from 'react';
+
+import type { Theme } from '@material-ui/core';
 import {
-  makeStyles,
-  Theme,
-  createStyles,
   Button,
+  createStyles,
+  makeStyles,
   // CircularProgress,
 } from '@material-ui/core';
-import * as React from 'react';
 
 interface Props {
   isFetching: boolean;
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export const LoadMoreButton = ({ isFetching, handleClick }: Props) => {
+const LoadMoreButton = ({ isFetching, handleClick }: Props) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>

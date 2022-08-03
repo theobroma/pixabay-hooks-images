@@ -1,9 +1,12 @@
 import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+
+import { Container } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
+import type { Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { Container } from '@material-ui/core';
+
 import SearchBar from './SearchBar';
 
 const useStyles = makeStyles((theme: Theme) => {

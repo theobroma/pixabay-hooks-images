@@ -1,10 +1,12 @@
 import * as React from 'react';
-import MyModal from './Modal';
+
 import { useAppDispatch, useAppSelector } from '../../@store/configureStore';
+
 import { modalSelector } from './store/selectors';
 import { resetModalStateAC } from './store/slice';
+import MyModal from './Modal';
 
-export const AppModal = () => {
+const AppModal = () => {
   const dispatch = useAppDispatch();
   const { largeImageURL, tags } = useAppSelector(modalSelector);
 

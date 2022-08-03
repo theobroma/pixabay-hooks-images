@@ -1,4 +1,6 @@
 // Responsive approach https://www.tilcode.com/react-media-query-hook-responsive-material-ui-gridlist/
+import * as React from 'react';
+
 import {
   IconButton,
   ImageList,
@@ -9,10 +11,11 @@ import {
 } from '@material-ui/core';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { nanoid } from '@reduxjs/toolkit';
-import * as React from 'react';
+
 import { setImageData } from '../../@features/AppModal/store/slice';
 import { useAppDispatch } from '../../@store/configureStore';
-import { HitsEntityType } from '../../@types';
+import type { HitsEntityType } from '../../@types';
+
 import { useStyles } from './ImageGallery.styles';
 
 interface Props {
@@ -20,7 +23,7 @@ interface Props {
   // hits: any;
 }
 
-export const ImageGallery = ({ hits }: Props) => {
+const ImageGallery = ({ hits }: Props) => {
   const dispatch = useAppDispatch();
   const classes = useStyles();
   const theme = useTheme();

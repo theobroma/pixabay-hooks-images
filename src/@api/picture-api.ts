@@ -1,4 +1,5 @@
-import { PicturesDataResponseType } from '../@types';
+import type { PicturesDataResponseType } from '../@types';
+
 import { pixabayAxiosInstance } from './api';
 
 export const pictureAPI = {

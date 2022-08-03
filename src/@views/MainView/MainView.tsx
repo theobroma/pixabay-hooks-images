@@ -1,5 +1,7 @@
-import { Container, Box } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
+
+import { Box, Container } from '@material-ui/core';
+
 import ImageGallery from '../../@components/ImageGallery';
 import LoadMoreButton from '../../@components/LoadMoreButton';
 import LoadingPage from '../../@components/UI/LoadingPage';
@@ -11,7 +13,11 @@ const MainView = () => {
   const dispatch = useAppDispatch();
 
   const {
-    data: { total, totalHits, hits },
+    data: {
+      // total,
+      // totalHits,
+      hits,
+    },
     error,
     isError,
     isFetching,
