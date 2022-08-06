@@ -15,7 +15,7 @@ const AppModal = () => {
   };
   return (
     <>
-      {largeImageURL && (
+      {!!largeImageURL && (
         <MyModal onClose={toggleModal}>
           <img src={largeImageURL} alt={tags} />
         </MyModal>

@@ -56,8 +56,8 @@ const MainView = () => {
 
   return (
     <Container maxWidth={false}>
-      {isFetching && <LoadingPage />}
-      {hits && <ImageGallery hits={hits} />}
+      {!!isFetching && <LoadingPage />}
+      {!!hits && <ImageGallery hits={hits} />}
       <Box my={3}>
         <LoadMoreButton isFetching={isFetching} handleClick={handleLoadMore} />
       </Box>
