@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/pixabay-hooks-images/static/css/main.31ff3444.css",
-    "main.js": "/pixabay-hooks-images/static/js/main.aca43d48.js",
-    "static/js/787.76bd61d5.chunk.js": "/pixabay-hooks-images/static/js/787.76bd61d5.chunk.js",
+    "main.css": "/pixabay-hooks-images/static/css/main.c700afae.css",
+    "main.js": "/pixabay-hooks-images/static/js/main.e8506d8c.js",
+    "static/js/496.e3f129d4.chunk.js": "/pixabay-hooks-images/static/js/496.e3f129d4.chunk.js",
     "static/media/roboto-all-500-normal.woff": "/pixabay-hooks-images/static/media/roboto-all-500-normal.0ab669b7a0d19b178f57.woff",
     "static/media/roboto-all-700-normal.woff": "/pixabay-hooks-images/static/media/roboto-all-700-normal.a457fde362a540fcadff.woff",
     "static/media/roboto-all-400-normal.woff": "/pixabay-hooks-images/static/media/roboto-all-400-normal.c5d001fa922fa66a147f.woff",
@@ -36,12 +36,12 @@
     "static/media/roboto-greek-ext-300-normal.woff2": "/pixabay-hooks-images/static/media/roboto-greek-ext-300-normal.35b9d6be04b95f0f0530.woff2",
     "static/media/roboto-greek-ext-700-normal.woff2": "/pixabay-hooks-images/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/pixabay-hooks-images/index.html",
-    "main.31ff3444.css.map": "/pixabay-hooks-images/static/css/main.31ff3444.css.map",
-    "main.aca43d48.js.map": "/pixabay-hooks-images/static/js/main.aca43d48.js.map",
-    "787.76bd61d5.chunk.js.map": "/pixabay-hooks-images/static/js/787.76bd61d5.chunk.js.map"
+    "main.c700afae.css.map": "/pixabay-hooks-images/static/css/main.c700afae.css.map",
+    "main.e8506d8c.js.map": "/pixabay-hooks-images/static/js/main.e8506d8c.js.map",
+    "496.e3f129d4.chunk.js.map": "/pixabay-hooks-images/static/js/496.e3f129d4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.31ff3444.css",
-    "static/js/main.aca43d48.js"
+    "static/css/main.c700afae.css",
+    "static/js/main.e8506d8c.js"
   ]
 }
